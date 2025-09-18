@@ -7,5 +7,7 @@
         public string Email { get; set; }
         public string password { get; set; }
         public int rol { get; set; }
+
+        public ICollection<Order> Pedidos { get; set; }
     }
 }
