@@ -7,6 +7,7 @@ namespace pedidos.Data
     {
         public PedidosDBContext(DbContextOptions<PedidosDBContext> options) : base(options) { }
 
+        
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -14,6 +15,7 @@ namespace pedidos.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.Entity<Product>()
                 .Property(p => p.Precio)
                 .HasColumnType("decimal(8,2)");
@@ -26,19 +28,20 @@ namespace pedidos.Data
                 .Property(oi => oi.Subtotal)
                 .HasColumnType("decimal(10,2)");
 
+            
             modelBuilder.Entity<Order>()
-                .HasOne(o => o.Cliente)
-                .WithMany(u => u.Pedidos)
+                .HasOne(o => o.Cliente)               
+                .WithMany(u => u.Pedidos)           
                 .HasForeignKey(o => o.IdCliente);
 
             modelBuilder.Entity<Order>()
-                 .HasMany(o => o.DetallePedidos)
-                 .WithOne(oi => oi.Pedido)
-                 .HasForeignKey(oi => oi.IdPedido);
+                .HasMany(o => o.DetallePedidos)      
+                .WithOne(oi => oi.Pedido)             
+                .HasForeignKey(oi => oi.IdPedido);
 
             modelBuilder.Entity<OrderItem>()
-                .HasOne(oi => oi.Producto)
-                .WithMany(p => p.DetallePedidos)
+                .HasOne(oi => oi.Producto)            
+                .WithMany(p => p.DetallePedidos)      
                 .HasForeignKey(oi => oi.IdProducto);
         }
     }

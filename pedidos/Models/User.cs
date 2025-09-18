@@ -5,8 +5,8 @@
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
-        public string password { get; set; }
-        public int rol { get; set; }
+        public string Password { get; set; }
+        public int Rol { get; set; }
 
         public ICollection<Order> Pedidos { get; set; }
     }
