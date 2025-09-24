@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using pedidos.Data;
 using pedidos.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace pedidos.Controllers
 {
